@@ -4,7 +4,11 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
-model=load_model('/home/job/Downloads/mobilenet_finetuned2.keras')
+from django.views.decorators.csrf import csrf_exempt
+import json
+import ollama
+
+model=load_model('/home/job/Desktop/agri_agent_AI/AgriProject/main_app/mobilenet_finetuned2.keras')
 class_names=['corn_Blight', 'corn_Gray Leaf Spot', 'corn_Healthy',
              'corn_Northern_Leaf_Blight', 'corn_common_Rust', 'potato_Early Blight',
              'potato_Healthy', 'potato_Late Blight']
@@ -47,3 +51,26 @@ def process(request):
         'prediction': prediction,
         'confidence': confidence
     })
+
+@csrf_exempt
+def chatbot(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        user_message = data.get("message", "")
+
+        # Build context (you can expand this with FAISS later)
+        context = """
+        You are an agricultural expert chatbot.
+        You answer questions about maize and potato diseases,
+        including causes, prevention, and remedies.
+        """
+
+        prompt = f"{context}\nFarmer: {user_message}\nAssistant:"
+
+        # Call Ollama
+        response = ollama.chat(model="llama3.2:1b", messages=[
+            {"role": "user", "content": prompt}
+        ])
+
+        answer = response["message"]["content"]
+        return JsonResponse({"reply": answer})

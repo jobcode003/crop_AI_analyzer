@@ -33,3 +33,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const chatBox = document.getElementById("chat-box");
+const userInput = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+
+sendBtn.onclick = async function() {
+  const message = userInput.value.trim();
+  if (!message) return;
+
+  // Display user message
+  chatBox.innerHTML += `<div class="user">👨‍🌾 You: ${message}</div>`;
+  userInput.value = "";
+
+  // Send to Django backend
+  const response = await fetch("/chatbot/", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({message})
+  });
+
+  const data = await response.json();
+  const reply = data.reply;
+
+  chatBox.innerHTML += `<div class="bot">🤖 AgriChat: ${reply}</div>`;
+  chatBox.scrollTop = chatBox.scrollHeight;
+};

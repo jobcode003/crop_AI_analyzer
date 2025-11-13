@@ -42,12 +42,22 @@
         <p>prediction confidence: {{ confidence }}%</p>
     {% endif %}
 </div>
- <h2>Chat with Model</h2>
-    <div class="chatbot_container">
-         <textarea id="user_input" placeholder="Type your text here..."></textarea><br>
-    <button onclick="sendText()" id="chatbot_trigger">Send</button>
+ <div class="chat-container">
+    <h3>🌾 AgriChat – Your Farm Assistant</h3>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Ask about your crop disease...">
+      <button id="send-btn">Send</button>
     </div>
-     <div id="response" class="response"></div>
+    <div id="chat-box"></div>
+  </div>
+ 
+
+    <!--<div class="chatbot_container" id="chatbot_container">
+          <h2>Chat with Model</h2>
+             <input id="user_input" placeholder="Type your text here..." type="text"></input><br>
+            <button id="send_btn">Send</button>
+    </div>
+     <div id="response" class="response"></div>-->
 <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
