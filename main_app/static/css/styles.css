@@ -162,9 +162,6 @@ input[type="file"] {
   padding: 20px;
   margin: 50px;
 }
-
-
-
 h2{
   text-align: center;
 }
@@ -178,10 +175,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-
-
-
 @media (max-width: 600px) {
   .container, .prediction {
     max-width: 98vw;
@@ -201,6 +194,3 @@ body {
     max-height: 120px;
   }
 }
-
-
-
