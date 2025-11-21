@@ -6,7 +6,6 @@
 }
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
   min-height: 100vh;
   color: #222;
 }
@@ -175,7 +174,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 600px) {
+
+
+    @media (max-width: 600px) {
   .container, .prediction {
     max-width: 98vw;
     padding: 1rem 0.5rem;
