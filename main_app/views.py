@@ -10,7 +10,7 @@ import requests
 import ollama
 
 
-model=load_model('/home/job/Desktop/agri_agent_AI/AgriProject/main_app/mobilenet_finetuned2.keras')
+model=load_model('/home/job/Desktop/projects/agri_agent_AI/AgriProject/main_app/mobilenet_finetuned2.keras')
 class_names=['corn_Blight', 'corn_Gray Leaf Spot', 'corn_Healthy',
              'corn_Northern_Leaf_Blight', 'corn_common_Rust', 'potato_Early Blight',
              'potato_Healthy', 'potato_Late Blight']

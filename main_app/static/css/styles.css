@@ -175,7 +175,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 600px) {
+
+
+    @media (max-width: 600px) {
   .container, .prediction {
     max-width: 98vw;
     padding: 1rem 0.5rem;
