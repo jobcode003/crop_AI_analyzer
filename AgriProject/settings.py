@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from dotenv import load_dotenv
 import os
 load_dotenv()
-
+DEBUG=False
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,8 +30,11 @@ SECRET_KEY = 'django-insecure-uk2*cp49jc1p17&+*-!*or)&m8&3eorqzq%w=2#l@&p^%ntk_b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*", ".onrender.com"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.onrender.com",
+]
 
 # Application definition
 
@@ -132,3 +135,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INSTALLED_APPS += ["corsheaders"]
+
+MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
+
+CORS_ALLOW_ALL_ORIGINS = True

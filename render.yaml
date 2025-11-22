@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: agri-ai-system
+    env: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*"
